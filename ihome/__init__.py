@@ -17,7 +17,7 @@ redis_store = None
 
 # 设置日志
 # 日志记录级别
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)  # flask在debug环境下会忽略logging的级别,强行设置为DEBUG
 # 创建日志记录器,指明存储路径,文件大小和数量
 file_log_handler = RotatingFileHandler('logs/log', maxBytes=1024*1024, backupCount=10)
 # 日志记录格式
