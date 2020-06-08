@@ -6,12 +6,26 @@ from flask_sqlalchemy import SQLAlchemy
 from redis import StrictRedis
 from flask_session import Session
 from flask_wtf import CSRFProtect
+import logging
+from logging.handlers import RotatingFileHandler
 
 # 数据库
 db = SQLAlchemy()
 
 # redis
 redis_store = None
+
+# 设置日志
+# 日志记录级别
+logging.basicConfig(level=logging.DEBUG)
+# 创建日志记录器,指明存储路径,文件大小和数量
+file_log_handler = RotatingFileHandler('logs/log', maxBytes=1024*1024, backupCount=10)
+# 日志记录格式
+formatter = logging.Formatter('%(levelname)s %(filename)s:%(lineno)d -- %(message)s')
+# 记录器加载格式
+file_log_handler.setFormatter(formatter)
+# 添加日志记录器到全局
+logging.getLogger().addHandler(file_log_handler)
 
 
 # 工厂模式
