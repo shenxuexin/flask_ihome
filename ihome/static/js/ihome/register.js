@@ -19,6 +19,13 @@ function generateUUID() {
 }
 
 function generateImageCode() {
+    // 向后端请求生成验证码图片
+    // 1.生成uuid--唯一标识符
+    imageCodeId = generateUUID();
+
+    // 更改img路径
+    url = "/api/v1.0/image_code/" + imageCodeId;
+    $(".image-code img").prop('src', url);
 }
 
 function sendSMSCode() {

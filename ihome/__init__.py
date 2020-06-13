@@ -57,8 +57,8 @@ def create_app(config_name):
     app.url_map.converters['re'] = commens.ReConverter
 
     # 注册蓝图
-    from . import api  # 延迟导入,避免循环引用
-    app.register_blueprint(api.api, url_prefix='/api/v1.0')
+    from . import api_1_0  # 延迟导入,避免循环引用
+    app.register_blueprint(api_1_0.api, url_prefix='/api/v1.0')
 
     from ihome.web_html import html
     app.register_blueprint(html)

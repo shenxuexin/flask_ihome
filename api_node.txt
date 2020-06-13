@@ -1,0 +1,29 @@
+接口文档
+
+1.接口名
+2.描述
+3.url
+4.请求方式
+5.请求参数
+6.返回值
+
+
+接口: 获取图片验证码
+描述: 用于前端获取图片验证码
+url: /api/v1.0/verify_code/<image_code_id>
+请求方式: GET
+参数:
+    格式: 路径参数 (查询字符串, 请求体表单, json, xml等)
+
+    名字              类型            是否必须              说明
+    image_code_id    str                是               图片验证码编号
+
+返回值:
+    格式: 正常-图片; 异常-json
+
+    名字              类型              是否必须                说明
+    errno          str               否                   错误代码
+    errmsg            str               否                   错误信息
+
+    实例
+    {'errno': '4001', 'errmsg': 'cannot save image code in redis'}

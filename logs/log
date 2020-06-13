@@ -259,3 +259,190 @@ INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 10:16:48] "GET /static/js/iho
 INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 10:16:48] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
 INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 10:16:48] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
 INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 10:16:48] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/__init__.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:11] "GET /register.html HTTP/1.1" 200 -
+ERROR _internal.py:87 -- Error on request:
+Traceback (most recent call last):
+  File "/home/shenxuexin/.virtualenvs/Flask_py/lib/python2.7/site-packages/werkzeug/serving.py", line 209, in run_wsgi
+    execute(self.server.app)
+  File "/home/shenxuexin/.virtualenvs/Flask_py/lib/python2.7/site-packages/werkzeug/serving.py", line 200, in execute
+    write(data)
+  File "/home/shenxuexin/.virtualenvs/Flask_py/lib/python2.7/site-packages/werkzeug/serving.py", line 168, in write
+    self.send_header(key, value)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 412, in send_header
+    self.wfile.write("%s: %s\r\n" % (keyword, value))
+IOError: [Errno 32] Broken pipe
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:11] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:12] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:13] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:14] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 11:11:15] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/__init__.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/__init__.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:19:14] "GET /api/v1.0/verify_code/123 HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:06] "GET /register..html HTTP/1.1" 404 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:13] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:13] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:13] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:14] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:15] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:15] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:16] "GET /api/v1.0/verify_code/ff12957c-5dce-4a9d-9dd5-fea052fb3b32 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:25] "GET /api/v1.0/verify_code/3483b1f8-f95e-4923-bc4d-a5dffcd6df43 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:25] "GET /api/v1.0/verify_code/8b63bf5d-f48f-4df2-81eb-c42f954a2243 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:26] "GET /api/v1.0/verify_code/5c68af96-b82e-4ead-90d0-250f71617494 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 15:34:27] "GET /api/v1.0/verify_code/d0a8810c-31d9-4feb-8d46-e664543b8e9b HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:10] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:13] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:14] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:14] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:15] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:18] "GET /api/v1.0/image_code/97bc363f-4d66-4391-be50-e8410b2423cc HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:18] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:20] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:23] "GET /api/v1.0/image_code/55f60be0-e46e-4bf8-8ed4-e47fe949337f HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 17:21:24] "GET /api/v1.0/image_code/ff3b907a-3464-4d39-8ad1-8bdaf2af6115 HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 --  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:55] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:56] "GET /api/v1.0/image_code/76b12072-a332-46de-b803-1d9b59380f98 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:56] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:35:56] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:09] "GET /api/v1.0/sms_code/18906962773 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:20] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=image_code_76b12072-a332-46de-b803-1d9b59380f98 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:23] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=image_code_76b12072-a332-46de-b803-1d9b59380f98 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:28] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:29] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:30] "GET /api/v1.0/image_code/0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:30] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:38:31] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:54] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=image_code_0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:56] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=image_code_0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:38:58] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=image_code_0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:39:53] "GET /api/v1.0/sms_code/18906962773?image_code=asdf&image_code_id=0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+ERROR verify_code.py:78 -- type object 'User' has no attribute 'filter_by'
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:40:17] "GET /api/v1.0/sms_code/18906962773?image_code=HNSn&image_code_id=0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+ERROR verify_code.py:78 -- type object 'User' has no attribute 'filter_by'
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:40:31] "GET /api/v1.0/sms_code/13161120588?image_code=HNSn&image_code_id=0f7a9b91-3515-41eb-8d7c-85ee4f3b9752 HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:58] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:47:59] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:48:02] "GET /api/v1.0/image_code/f20724b6-bb54-4c0f-a65f-50047b22d1ec HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:48:03] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 19:48:03] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:48:32] "GET /api/v1.0/sms_code/13161120588?image_code=HNSn&image_code_id=f20724b6-bb54-4c0f-a65f-50047b22d1ec HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:48:34] "GET /api/v1.0/sms_code/13161120588?image_code=HNSn&image_code_id=f20724b6-bb54-4c0f-a65f-50047b22d1ec HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 19:48:37] "GET /api/v1.0/sms_code/13161120588?image_code=HNSn&image_code_id=f20724b6-bb54-4c0f-a65f-50047b22d1ec HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:44] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:45] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:45] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:45] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:46] "GET /api/v1.0/image_code/699a29b7-22cb-42f5-ac59-05a324c98d6a HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:00:46] "GET /favicon.ico HTTP/1.1" 200 -
+ERROR verify_code.py:93 -- type object 'User' has no attribute 'filter_by'
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 20:01:30] "GET /api/v1.0/sms_code/13161120588?image_code=IE8X&image_code_id=699a29b7-22cb-42f5-ac59-05a324c98d6a HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:36] "GET /register.html HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/css/reset.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/css/ihome/main.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/css/ihome/register.css HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/js/ihome/register.js HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/images/logo@128x59.png HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:37] "GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:38] "GET /api/v1.0/image_code/4d8f0a37-64e2-4b37-8e6e-005b8d6aac7b HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:38] "GET /static/plugins/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+INFO _internal.py:87 -- 127.0.0.1 - - [13/Jun/2020 20:01:38] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 -- 192.168.153.1 - - [13/Jun/2020 20:02:13] "GET /api/v1.0/sms_code/13161120588?image_code=JKGG&image_code_id=4d8f0a37-64e2-4b37-8e6e-005b8d6aac7b HTTP/1.1" 200 -
+INFO _internal.py:87 --  * Detected change in '/home/shenxuexin/flask/flask_ihome/ihome/api_1_0/verify_code.py', reloading
+INFO _internal.py:87 --  * Restarting with stat
+WARNING _internal.py:87 --  * Debugger is active!
+INFO _internal.py:87 --  * Debugger PIN: 150-700-465
