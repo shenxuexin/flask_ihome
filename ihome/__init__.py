@@ -8,6 +8,7 @@ from flask_session import Session
 from flask_wtf import CSRFProtect
 import logging
 from logging.handlers import RotatingFileHandler
+from ihome.util import commens
 
 # 数据库
 db = SQLAlchemy()
@@ -52,8 +53,14 @@ def create_app(config_name):
     # 设置csrf校验
     CSRFProtect(app)
 
+    # 注册转换器
+    app.url_map.converters['re'] = commens.ReConverter
+
     # 注册蓝图
     from . import api  # 延迟导入,避免循环引用
     app.register_blueprint(api.api, url_prefix='/api/v1.0')
+
+    from ihome.web_html import html
+    app.register_blueprint(html)
 
     return app
