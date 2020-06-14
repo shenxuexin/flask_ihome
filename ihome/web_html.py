@@ -14,8 +14,6 @@ def get_html(html_file_name):
     if html_file_name != 'favicon.ico':
         html_file_name = 'html/' + html_file_name
 
-    print(current_app.url_map)
-
     # 生成csrf_token值
     csrf_token = csrf.generate_csrf()
 

@@ -2,7 +2,7 @@
 
 from . import api
 from ihome.util.captcha.captcha import captcha
-from ihome import redis_store, db, constant
+from ihome import redis_store, db, constants
 from ihome.response_code import RET
 from ihome.models import User
 from flask import current_app, jsonify, make_response, request
@@ -26,7 +26,7 @@ def get_image_code(image_code_id):
     # redis_store.set('image_%s' % image_code_id, text)
     # redis_store.expire('image_%s' % image_code_id, 180)
     try:
-        redis_store.setex('image_code_%s'%image_code_id, constant.IMAGE_CODE_REDIS_EXPIRE, text)
+        redis_store.setex('image_code_%s' % image_code_id, constants.IMAGE_CODE_REDIS_EXPIRE, text)
     except Exception as e:
         # 记录日志
         current_app.logger.error(e)
@@ -45,7 +45,7 @@ def get_image_code(image_code_id):
 
 
 # GET /sms_code/<mobile>?image_code=xxx&image_code_id=xxx
-@api.route('/sms_code/<re(r"1[35678]\d{9}"):mobile>')
+@api.route('/sms_code/<re(r"1[34578]\d{9}"):mobile>')
 def get_sms_code(mobile):
     # 获取数据
     image_code = request.args.get('image_code')
@@ -100,9 +100,9 @@ def get_sms_code(mobile):
 
     # 保存手机验证码
     try:
-        redis_store.setex('sms_code_%s' % mobile, constant.SMS_CODE_REDIS_EXPIRE, sms_code)
+        redis_store.setex('sms_code_%s' % mobile, constants.SMS_CODE_REDIS_EXPIRE, sms_code)
         # 保存该手机60s内访问过的标记
-        redis_store.setex('send_sms_code_%s' % mobile, constant.SEND_SMS_CODE_INTERVAL, 1)
+        redis_store.setex('send_sms_code_%s' % mobile, constants.SEND_SMS_CODE_INTERVAL, 1)
     except Exception as e:
         current_app.logger.error(e)
         return jsonify(errno=RET.DATAERR, errmsg=u'手机验证码保存失败')
@@ -110,7 +110,7 @@ def get_sms_code(mobile):
     # 发送手机验证码
     try:
         ccp = CCP()
-        ret = ccp.send_temp_sms(mobile, [sms_code, int(constant.SMS_CODE_REDIS_EXPIRE/60)], 1)
+        ret = ccp.send_temp_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRE / 60)], 1)
     except Exception as e:
         current_app.logger.error(e)
         return jsonify(errno=RET.THIRDERR, errmsg=u'手机验证码发送异常')

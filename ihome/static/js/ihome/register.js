@@ -44,7 +44,9 @@ function sendSMSCode() {
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     }
-    $.get("/api/smscode", {mobile:mobile, code:imageCode, codeId:imageCodeId}, 
+
+    var verifyUrl = "/api/v1.0/sms_code/"+mobile;
+    $.get(verifyUrl, {image_code:imageCode, image_code_id:imageCodeId},
         function(data){
             if (0 != data.errno) {
                 $("#image-code-err span").html(data.errmsg); 
@@ -89,11 +91,13 @@ $(document).ready(function() {
         $("#password2-err").hide();
     });
     $(".form-register").submit(function(e){
+        // 阻止默认行为
         e.preventDefault();
-        mobile = $("#mobile").val();
-        phoneCode = $("#phonecode").val();
-        passwd = $("#password").val();
-        passwd2 = $("#password2").val();
+
+        var mobile = $("#mobile").val();
+        var phoneCode = $("#phonecode").val();
+        var passwd = $("#password").val();
+        var passwd2 = $("#password2").val();
         if (!mobile) {
             $("#mobile-err span").html("请填写正确的手机号！");
             $("#mobile-err").show();
@@ -114,5 +118,34 @@ $(document).ready(function() {
             $("#password2-err").show();
             return;
         }
+
+        // 发送ajax请求
+        var req_data = {
+            mobile: mobile,
+            password: passwd,
+            repassword: passwd2,
+            sms_code: phoneCode
+        };
+        var req_json = JSON.stringify(req_data);
+        $.ajax({
+            url: '/api/v1.0/users',
+            type: 'POST',
+            data: req_json,
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: {
+                'X-CSRFToken': getCookie("csrf_token")
+            }  // 设置请求头, 包含csrftoken值, 用于后端校验
+        })
+        .done(function (result) {
+            if(result.errno === "0")
+            {
+                location.href = '/';
+            }
+            else
+            {
+                alert(result.errmsg);
+            }
+        })
     });
-})
+});
