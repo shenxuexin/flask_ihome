@@ -6,8 +6,8 @@ function getCookie(name) {
 function showSuccessMsg() {
     $('.popup_con').fadeIn('fast', function() {
         setTimeout(function(){
-            $('.popup_con').fadeOut('fast',function(){}); 
-        },1000) 
+            $('.popup_con').fadeOut('fast',function(){});
+        },1000)
     });
 }
 
@@ -15,8 +15,14 @@ $(document).ready(function () {
     $.get("/api/v1.0/users/auth", function (result) {
         if(result.errno === "0")
         {
-            $("#real-name").val(result.data.real_name);
-            $("#id-card").val(result.data.id_card);
+            if(result.data.real_name && result.data.id_card)
+            {
+                $("#real-name").val(result.data.real_name);
+                $("#id-card").val(result.data.id_card);
+                $("#real-name").prop("disabled", true);
+                $("#id-card").prop("disabled", true);
+                $("#form-auth input[type='submit']").hide();
+            }
         }
         else
         {
@@ -35,7 +41,23 @@ $(document).ready(function () {
                 "X-CSRFToken": getCookie("csrf_token")
             },
             success: function (result) {
-                alert(result.errmsg);
+                if(result.errno === "0")
+                {
+                    $(".error-msg").hide();
+                    showSuccessMsg();
+                    $("#real-name").prop("disabled", true);
+                    $("#id-card").prop("disabled", true);
+                    $("#form-auth input[type='submit']").hide();
+                }
+                else if(result.errno === "4101")
+                {
+                    location.href = "/login.html";
+                }
+                else
+                {
+                    $(".error-msg").text(result.errmsg);
+                    $(".error-msg").show();
+                }
             }
         });
 

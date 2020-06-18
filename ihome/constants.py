@@ -17,3 +17,6 @@ LOGIN_TRY_RECORD_MAX_TIME = 600
 
 # 七牛的链接域名
 QINIU_URL_DOMIN = 'http://qc1s4rf9r.bkt.clouddn.com/'
+
+# 地区信息缓存的存储时间, 单位:秒
+AREA_INFO_REDIS_CACHE_EXPIRE = 7200

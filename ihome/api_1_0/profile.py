@@ -1,7 +1,7 @@
 # -*-coding:utf-8-*-
 
 from . import api
-from flask import request, g, jsonify, current_app
+from flask import request, g, jsonify, current_app, session
 from ihome.util.commens import login_required
 from ihome.response_code import RET
 from ihome.models import User
@@ -48,22 +48,45 @@ def set_avatar():
     return jsonify(errno=RET.OK, errmsg=u'上传成功', data={'avatar_url': avatar_url})
 
 
-@api.route('/users/profile', methods=['GET'])
+@api.route('/users/name', methods=['PUT'])
 @login_required
-def get_info():
+def change_user_name():
+    # 获取数据
+    user_id = g.user_id
+    req_data = request.get_json()
+
+    # 校验数据
+    if not req_data:
+        return jsonify(errno=RET.PARAMERR, errmsg=u'参数不完整')
+
+    username = req_data.get('username')
+    if not username:
+        return jsonify(errno=RET.PARAMERR, errmsg=u'用户名不能为空')
+
+    # 业务处理: 更改用户名
+    try:
+        User.query.filter_by(id=user_id).update({'name': username})
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        current_app.logger.error(e)
+        return jsonify(errno=RET.DBERR, errmsg=u'用户名更改失败')
+
+    # 返回响应
+    session['name'] = username
+    return jsonify(errno=RET.OK, errmsg=u'保存成功')
+
+
+@api.route('/user', methods=['GET'])
+@login_required
+def get_user_info():
     user_id = g.user_id
     user = User.query.get(user_id)
 
     if user is None:
         return jsonify(errno=RET.NODATA, errmsg=u'用户不存在')
 
-    avatar_url = constants.QINIU_URL_DOMIN + user.avatar_url
-    data = {
-        'username': user.name,
-        'mobile': user.mobile,
-        'avatar': avatar_url
-    }
-    return jsonify(errno=RET.OK, errmsg=u'查询成功', data=data)
+    return jsonify(errno=RET.OK, errmsg=u'查询成功', data=user.to_dict())
 
 
 @api.route('/users/auth', methods=['GET'])
@@ -75,12 +98,7 @@ def get_auth():
     if user is None:
         return jsonify(errno=RET.NODATA, errmsg=u'用户不存在')
 
-    data = {
-        'real_name': user.real_name,
-        'id_card': user.id_card
-    }
-
-    return jsonify(errno=RET.OK, errmsg=u'查询成功', data=data)
+    return jsonify(errno=RET.OK, errmsg=u'查询成功', data=user.auth_to_dict())
 
 
 @api.route('/users/auth', methods=['POST'])
@@ -104,12 +122,16 @@ def set_auth():
 
     # 业务处理: 存储认证信息
     try:
-        User.query.filter_by(id=user_id).update({'real_name': real_name, 'id_card': id_card})
+        update_result = User.query.filter_by(id=user_id, real_name=None, id_card=None)\
+            .update({'real_name': real_name, 'id_card': id_card})
         db.session.commit()
     except Exception as e:
         db.session.rollback()
         current_app.logger.error(e)
         return jsonify(errno=RET.DBERR, errmsg=u'认证信息存储失败')
+
+    if update_result == 0:
+        return jsonify(errno=RET.ROLEERR, errmsg=u'不可重复认证')
 
     # 返回响应
     return jsonify(errno=RET.OK, errmsg=u'认证成功')

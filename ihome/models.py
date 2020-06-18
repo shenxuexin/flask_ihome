@@ -41,6 +41,25 @@ class User(BaseModel, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def to_dict(self):
+        avatar_url = None
+        if self.avatar_url:
+            avatar_url = constants.QINIU_URL_DOMIN + self.avatar_url
+        user_dict = {
+            'id': self.id,
+            'username': self.name,
+            'mobile': self.mobile,
+            'avatar': avatar_url
+        }
+        return user_dict
+
+    def auth_to_dict(self):
+        auth_dict = {
+            'real_name': self.real_name,
+            'id_card': self.id_card
+        }
+        return auth_dict
+
 
 class Area(BaseModel, db.Model):
     '''城区'''
@@ -50,6 +69,14 @@ class Area(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key=True)  # 区域编号
     name = db.Column(db.String(32), nullable=False)  # 区域名字
     houses = db.relationship('House', backref='area')  # 区域的房屋
+
+    def to_dict(self):
+        d = {
+            'id': self.id,
+            'name': self.name
+        }
+
+        return d
 
 
 # 房屋设施表，建立房屋与设施的多对多关系

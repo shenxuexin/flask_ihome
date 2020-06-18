@@ -25,10 +25,12 @@ function logout() {
 }
 
 $(document).ready(function(){
-    $.get('/api/v1.0/users/profile', function (result) {
+    $.get('/api/v1.0/user', function (result) {
         if(result.errno === '0')
         {
-            $("#user-avatar").prop("src", result.data.avatar);
+            if(result.data.avatar !== null){
+                $("#user-avatar").prop("src", result.data.avatar);
+            }
             $("#user-name").text(result.data.username);
             $("#user-mobile").text(result.data.mobile);
         }
