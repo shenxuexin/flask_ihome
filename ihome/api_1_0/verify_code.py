@@ -6,7 +6,8 @@ from ihome import redis_store, db, constants
 from ihome.response_code import RET
 from ihome.models import User
 from flask import current_app, jsonify, make_response, request
-from ihome.libs.yuntongxun.sms import CCP
+# from ihome.tasks.send_sms import send_sms
+from ihome.tasks.sms.tasks import send_sms
 import random
 
 
@@ -108,15 +109,15 @@ def get_sms_code(mobile):
         return jsonify(errno=RET.DATAERR, errmsg=u'手机验证码保存失败')
 
     # 发送手机验证码
-    try:
-        ccp = CCP()
-        ret = ccp.send_temp_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRE / 60)], 1)
-    except Exception as e:
-        current_app.logger.error(e)
-        return jsonify(errno=RET.THIRDERR, errmsg=u'手机验证码发送异常')
+    # try:
+    #     ccp = CCP()
+    #     ret = ccp.send_temp_sms(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRE / 60)], 1)
+    # except Exception as e:
+    #     current_app.logger.error(e)
+    #     return jsonify(errno=RET.THIRDERR, errmsg=u'手机验证码发送异常')
+
+    # 利用celery发送短信
+    send_sms.delay(mobile, [sms_code, int(constants.SMS_CODE_REDIS_EXPIRE / 60)], 1)
 
     # 返回响应
-    if ret == 0:
-        return jsonify(errno=RET.OK, errmsg=u'发送成功')
-    else:
-        return jsonify(errno=RET.THIRDERR, errmsg=u'发送失败')
+    return jsonify(errno=RET.OK, errmsg=u'发送成功')
