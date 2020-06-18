@@ -24,5 +24,33 @@ $(document).ready(function() {
             $("#password-err").show();
             return;
         }
+
+        var reqData = {
+            mobile: mobile,
+            password: passwd
+        };
+
+        var reqJson = JSON.stringify(reqData);
+
+        $.ajax({
+            url: '/api/v1.0/session',
+            type: 'post',
+            data: reqJson,
+            contentType: 'application/json',
+            dataType: 'json',
+            headers: {
+                'X-CSRFToken': getCookie('csrf_token')
+            }
+        })
+        .done(function (result) {
+            if(result.errno === "0")
+            {
+                location.href = '/';
+            }
+            else
+            {
+                alert(result.errmsg);
+            }
+        })
     });
-})
+});
