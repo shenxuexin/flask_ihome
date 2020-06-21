@@ -142,7 +142,7 @@ body {
 .parkingspace-ico{ background-position:0 -652px; height:21px;}
 .jinzhi-ico{ background-position:0 -248px; height:20px;}
 .house-info, .house-facility {
-    padding: 10px 10px 0;
+    padding: 10px;
     font-size: 14px;
     color: #999;
 }

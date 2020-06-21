@@ -1,11 +1,11 @@
 //模态框居中的控制
 function centerModals(){
-    $('.modal').each(function(i){   //遍历每一个模态框
-        var $clone = $(this).clone().css('display', 'block').appendTo('body');    
-        var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+    $(".modal").each(function(i){   //遍历每一个模态框
+        var $clone = $(this).clone().css("display", "block").appendTo("body");
+        var top = Math.round(($clone.height() - $clone.find(".modal-content").height()) / 2);
         top = top > 0 ? top : 0;
         $clone.remove();
-        $(this).find('.modal-content').css("margin-top", top-30);  //修正原先已经有的30个像素
+        $(this).find(".modal-content").css("margin-top", top-30);  //修正原先已经有的30个像素
     });
 }
 
@@ -59,10 +59,10 @@ function goToSearchPage(th) {
 
 $(document).ready(function(){
     // 校验登录状态
-    $.get('/api/v1.0/session', function (result) {
-        if(result.errno === '0')
+    $.get("/api/v1.0/session", function (result) {
+        if(result.errno === "0")
         {
-            $(".user-info .user-name").text(result.data['name']);
+            $(".user-info .user-name").text(result.data["name"]);
             $(".top-bar>.user-info").show();
         }
         else
@@ -71,21 +71,35 @@ $(document).ready(function(){
         }
     });
 
-    var mySwiper = new Swiper ('.swiper-container', {
-        loop: true,
-        autoplay: 2000,
-        autoplayDisableOnInteraction: false,
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-    }); 
-    $(".area-list a").click(function(e){
-        $("#area-btn").html($(this).html());
-        $(".search-btn").attr("area-id", $(this).attr("area-id"));
-        $(".search-btn").attr("area-name", $(this).html());
-        $("#area-modal").modal("hide");
+    $.get("/api/v1.0/houses/index", function (result) {
+        if(result.errno === "0")
+        {
+            $(".swiper-wrapper").append(template("house-index-temp", {houses: result.data}));
+            var mySwiper = new Swiper (".swiper-container", {
+                loop: true,
+                autoplay: 2000,
+                autoplayDisableOnInteraction: false,
+                pagination: ".swiper-pagination",
+                paginationClickable: true
+            });
+        }
     });
-    $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
-    $(window).on('resize', centerModals);               //当窗口大小变化的时候
+
+    $.get("/api/v1.0/areas", function (result) {
+        if(result.errno === "0")
+        {
+            $(".area-list").append(template("area-list-temp", {areas: result.data}));
+        }
+        $(".area-list a").click(function(e){
+            $("#area-btn").html($(this).html());
+            $(".search-btn").attr("area-id", $(this).attr("area-id"));
+            $(".search-btn").attr("area-name", $(this).html());
+            $("#area-modal").modal("hide");
+        });
+    });
+
+    $(".modal").on("show.bs.modal", centerModals);      //当模态框出现的时候
+    $(window).on("resize", centerModals);               //当窗口大小变化的时候
     $("#start-date").datepicker({
         language: "zh-CN",
         keyboardNavigation: false,

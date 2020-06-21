@@ -20,3 +20,21 @@ QINIU_URL_DOMIN = 'http://qc1s4rf9r.bkt.clouddn.com/'
 
 # 地区信息缓存的存储时间, 单位:秒
 AREA_INFO_REDIS_CACHE_EXPIRE = 7200
+
+# 首页查询的房屋数目
+HOME_SHOW_HOUSES_NUM = 5
+
+# 首页查询的房屋信息缓存时间, 单位:秒
+HOME_HOUSES_REDIS_EXPIRE = 7200
+
+# 房屋详情展示的最大评论数
+HOUSE_INFO_COMMENTS_MAX_NUM = 30
+
+# 房屋详情信息缓存信息保存时间, 单位: 秒
+HOUSE_INFO_REDIS_EXPIRE = 7200
+
+# 每一页展示的数据量
+PER_PAGE_CAPACITY = 2
+
+# 房屋列表页的缓存保存时间
+HOUSE_LIST_REDIS_CACHE_EXPIRE = 7200

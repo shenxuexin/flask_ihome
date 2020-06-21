@@ -112,6 +112,76 @@ class House(BaseModel, db.Model):
     images = db.relationship('HouseImage')  # 房屋的图片
     orders = db.relationship('Order', backref='house')  # 房屋的订单
 
+    def to_full_dict(self):
+        full_dict = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'title': self.title,
+            'area': self.area.name,
+            'price': float(self.price)/100,
+            'room_count': self.room_count,
+            'acreage': self.acreage,
+            'unit': self.unit,
+            'capacity': self.capacity,
+            'beds': self.beds,
+            'deposit': float(self.deposit)/100,
+            'min_days': self.min_days,
+            'max_days': self.max_days,
+            'address': self.address,
+            'user_avatar': constants.QINIU_URL_DOMIN + self.user.avatar_url if self.user.avatar_url else '',
+            'user_name': self.user.name,
+            'image_url': constants.QINIU_URL_DOMIN+self.index_image_url if self.index_image_url else '',
+            'create_time': self.create_time.strftime('%Y-%m-%d')
+        }
+
+        # 添加设备信息
+        facilities = []
+        for facility in self.facilities:
+            facilities.append(facility.id)
+
+        full_dict['facilities'] = facilities
+
+        # 添加图片信息
+        images = []
+        for image in self.images:
+            image_url = constants.QINIU_URL_DOMIN+image.url
+            images.append(image_url)
+
+        full_dict['images'] = images
+
+        # 添加评论信息
+        comments = []
+        orders = Order.query.filter(Order.house_id==self.id, Order.status=='COMPLETE', Order.comment is not None)\
+            .order_by(Order.update_time.desc()).limit(constants.HOUSE_INFO_COMMENTS_MAX_NUM).all()
+
+        for order in orders:
+            comment = {
+                'user_name': orders.user.name if order.user_id != order.user.mobile else u'匿名用户',
+                'update_time': order.update_time.strftime('%Y-%m-%d %H:%M:%S'),
+                'comment': order.comment
+            }
+            comments.append(comment)
+
+        full_dict['comments'] = comments
+
+        return full_dict
+
+    def to_basic_dict(self):
+        basic_dict = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'title': self.title,
+            'area': self.area.name,
+            'price': float(self.price)/100,
+            'room_count': self.room_count,
+            'order_count': self.order_count,
+            'address': self.address,
+            'user_avatar': constants.QINIU_URL_DOMIN + self.user.avatar_url if self.user.avatar_url else '',
+            'image_url': constants.QINIU_URL_DOMIN+self.index_image_url if self.index_image_url else '',
+            'create_time': self.create_time.strftime('%Y-%m-%d')
+        }
+        return basic_dict
+
 
 class Facility(BaseModel, db.Model):
     '''设施信息'''
