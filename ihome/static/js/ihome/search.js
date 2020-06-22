@@ -26,7 +26,7 @@ function updateFilterDateDisplay() {
     }
 }
 
-function updateHouseData(action){
+function updateHouseData(action="append"){
     var areaId = $(".filter-area>li.active").attr("area-id");
     if(areaId === undefined) areaId = "";
     var startDate = $("#start-date").val();
@@ -79,6 +79,8 @@ $(document).ready(function(){
     if (!areaName) areaName = "位置区域";
     $(".filter-title-bar>.filter-title").eq(1).children("span").eq(0).html(areaName);
 
+    template("house-list-temp", {house:[]});
+    
     // 获取区域信息
     $.get("/api/v1.0/areas", function (result) {
         if(result.errno === "0")
@@ -89,11 +91,12 @@ $(document).ready(function(){
                 {
                     $(this).addClass("active").siblings().removeClass("active");
                 }
-            })
+            });
+
+            updateHouseData("renew");
         }
     });
 
-    updateHouseData("renew");
 
     var windowHeight = $(window).height();
     window.onscroll = function(){

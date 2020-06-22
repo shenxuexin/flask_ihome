@@ -11,7 +11,7 @@ function decodeQuery(){
     }, {});
 }
 
-$(document).ready(function(){
+$(function(){
     var house_id = decodeQuery()["id"];
     $.get("/api/v1.0/houses/"+house_id, function (result) {
         if(result.errno === "0")
@@ -34,6 +34,7 @@ $(document).ready(function(){
 
             if(result.data.user_id !== result.data.house.user_id)
             {
+                $(".book-house").attr("href", "/booking.html?hid="+result.data.house.id);
                 $(".book-house").show();
             }
             else

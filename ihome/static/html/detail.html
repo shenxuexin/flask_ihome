@@ -111,8 +111,8 @@
                     {{each house.comments as comment}}
                     <ul class="house-comment-list">
                         <li>
-                            <p>{{house.comment.user_name}}<span class="fr">{{house.comment}}</span></p>
-                            <p>{{house.comment.comment}}</p>
+                            <p>{{comment.user_name}}<span class="fr">{{comment.update_time}}</span></p>
+                            <p>{{comment.comment}}</p>
                         </li>
                     </ul>
                     {{/each}}

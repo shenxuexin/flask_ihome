@@ -15,10 +15,63 @@ function getCookie(name) {
 }
 
 $(document).ready(function(){
-    $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
-    $(window).on('resize', centerModals);
-    $(".order-comment").on("click", function(){
-        var orderId = $(this).parents("li").attr("order-id");
-        $(".modal-comment").attr("order-id", orderId);
-    });
+
+
+
+    // 请求订单数据
+    $.get("/api/v1.0/orders", {role: "custom"}, function (result) {
+        if(result.errno === "4101")
+        {
+            location.href = "/login.html";
+        }
+        else if(result.errno === "0")
+        {
+            $(".orders-list").html(template("orders-list-tmpl", {orders: result.data}));
+            $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
+            $(window).on('resize', centerModals);
+            $(".order-comment").on("click", function(){
+                var orderId = $(this).parents("li").attr("order-id");
+                $(".modal-comment").click(function () {
+                    var comment = $("#comment").val();
+                    if(comment.length <= 0)
+                    {
+                        alert("评论不能为空!");
+                    }
+                    else
+                    {
+                        $.ajax({
+                            url: "api/v1.0/order/"+orderId+"/comment",
+                            type: "put",
+                            contentType: "application/json",
+                            data: JSON.stringify({comment: comment}),
+                            headers: {
+                                "X-CSRFToken": getCookie("csrf_token")
+                            },
+                            dataType: "json",
+                            success: function (result) {
+                                if(result.errno === "4101")
+                                {
+                                    location.href = "/login.html";
+                                }
+                                else if(result.errno === "0")
+                                {
+                                    alert("评论成功!");
+                                    location.reload();
+                                }
+                                else
+                                {
+                                    alert(result.errmsg);
+                                }
+                            }
+                        })
+                    }
+
+                });
+            });
+        }
+        else
+        {
+            alert(result.errmsg);
+        }
+    })
 });

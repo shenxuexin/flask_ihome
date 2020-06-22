@@ -156,7 +156,7 @@ class House(BaseModel, db.Model):
 
         for order in orders:
             comment = {
-                'user_name': orders.user.name if order.user_id != order.user.mobile else u'匿名用户',
+                'user_name': order.user.name if order.user_id != order.user.mobile else u'匿名用户',
                 'update_time': order.update_time.strftime('%Y-%m-%d %H:%M:%S'),
                 'comment': order.comment
             }
@@ -227,3 +227,30 @@ class Order(BaseModel, db.Model):
         ),
         default='WAIT_ACCEPT', index=True)
     comment = db.Column(db.Text)  # 订单的评论信息或者拒单原因
+    status_dict = {
+        'WAIT_ACCEPT': '待接单',
+        'WAIT_PAYMENT': '待支付',
+        'PAID': '已支付',
+        'WAIT_COMMENT': '待评价',
+        'COMPLETE': '已完成',
+        'CANCELED': '已取消',
+        'REJECTED': '已拒单'
+    }
+
+    def to_dict(self):
+        order_dict = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'house_id': self.house_id,
+            'begin_date': self.begin_date.strftime('%Y-%m-%d'),
+            'end_date': self.end_date.strftime('%Y-%m-%d'),
+            'days': self.days,
+            'price': float(self.house_price)/100.0,
+            'amount': float(self.amount)/100.0,
+            'status': self.status_dict.get(self.status),
+            'comment': self.comment,
+            'image_url': constants.QINIU_URL_DOMIN+self.house.index_image_url,
+            'house_title': self.house.title,
+            'create_date': self.create_time.strftime('%Y-%m-%d')
+        }
+        return order_dict

@@ -128,7 +128,7 @@ def login():
         return jsonify(errno=RET.DATAERR, errmsg=u'用户名或密码错误')
 
     # 返回响应
-    session['name'] = mobile
+    session['name'] = user.name
     session['mobile'] = mobile
     session['user_id'] = user.id
     return jsonify(errno=RET.OK, errmsg=u'登录成功')

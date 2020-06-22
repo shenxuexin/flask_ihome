@@ -15,14 +15,88 @@ function getCookie(name) {
 }
 
 $(document).ready(function(){
-    $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
-    $(window).on('resize', centerModals);
-    $(".order-accept").on("click", function(){
-        var orderId = $(this).parents("li").attr("order-id");
-        $(".modal-accept").attr("order-id", orderId);
+    // 请求订单数据
+    $.get("/api/v1.0/orders", {role: "landlord"}, function (result) {
+        if(result.errno === "4101")
+        {
+            location.href = "/login.html";
+        }
+        else if(result.errno === "0")
+        {
+            $(".orders-list").html(template("orders-list-temp", {orders: result.data}));
+            $('.modal').on('show.bs.modal', centerModals);      //当模态框出现的时候
+            $(window).on('resize', centerModals);
+            $(".order-accept").on("click", function(){
+                var orderId = $(this).parents("li").attr("order-id");
+                $(".modal-accept").click(function () {
+                    $.ajax({
+                        url: "/api/v1.0/order/"+orderId+"/status",
+                        type: "put",
+                        contentType: "application/json",
+                        headers: {
+                            "X-CSRFToken": getCookie("csrf_token")
+                        },
+                        data: JSON.stringify({action: "accept"}),
+                        dataType: "json",
+                        success: function (result) {
+                            if(result.errno === "4101")
+                            {
+                                location.href = "/login.html";
+                            }
+                            else if(result.errno === "0")
+                            {
+                                location.reload();
+                            }
+                            else
+                            {
+                                alert(result.errmsg);
+                            }
+                        }
+                    })
+                });
+
+            });
+
+            $(".order-reject").on("click", function(){
+                var orderId = $(this).parents("li").attr("order-id");
+                $(".modal-reject").click(function () {
+                    var reason = $("#reject-reason").val();
+
+                    if (reason.length === 0)
+                    {
+                        alert("拒单原因不能为空");
+                    }
+                    else
+                    {
+                        $.ajax({
+                            url: "/api/v1.0/order/"+orderId+"/status",
+                            type: "put",
+                            contentType: "application/json",
+                            headers: {
+                                "X-CSRFToken": getCookie("csrf_token")
+                            },
+                            data: JSON.stringify({action: "reject", reason: reason}),
+                            dataType: "json",
+                            success: function (result) {
+                                if(result.errno === "4101")
+                                {
+                                    location.href = "/login.html";
+                                }
+                                else if(result.errno === "0")
+                                {
+                                    location.reload();
+                                }
+                            }
+                        })
+                    }
+
+
+                });
+            });
+        }
     });
-    $(".order-reject").on("click", function(){
-        var orderId = $(this).parents("li").attr("order-id");
-        $(".modal-reject").attr("order-id", orderId);
-    });
+
+
+
+
 });
