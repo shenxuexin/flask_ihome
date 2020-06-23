@@ -10,13 +10,16 @@ $(document).ready(function(){
         if(result.errno === "0")
         {
             var areas = result.data;
-            // for(i=0; i<areas.length; i++)
-            // {
-            //     area = areas[i];
-            //     $("#area-id").append("<option value='"+area.id+"'>"+area.name+"</option>");
-            // }
             options = template("html_template", {areas:areas});
             $("#area-id").html(options);
+        }
+    });
+
+    // 获取全部设备
+    $.get("/api/v1.0/facilities", function (result) {
+        if(result.errno === "0")
+        {
+            $(".house-facility-list").html(template("house-facility-list-temp", {facilities: result.data}));
         }
     });
 

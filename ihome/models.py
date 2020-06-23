@@ -189,7 +189,16 @@ class Facility(BaseModel, db.Model):
     __tablename__ = 'ih_facility_info'
 
     id = db.Column(db.Integer, primary_key=True)  # 设施编号
+    icon = db.Column(db.String(32))  # 设施图标
     name = db.Column(db.String(32), nullable=False)  # 设施名字
+
+    def to_dict(self):
+        facility_dict = {
+            'id': self.id,
+            'icon': self.icon,
+            'name': self.name
+        }
+        return facility_dict
 
 
 class HouseImage(BaseModel, db.Model):

@@ -409,7 +409,7 @@ def get_house_list():
 
     houses = []
     for house in paginator.items:
-        houses.append(house.to_basic_dict())
+        houses.append(house.to_full_dict())
 
     total_page_num = paginator.pages
 
@@ -423,3 +423,21 @@ def get_house_list():
         redis_store.expire(redis_key, constants.HOUSE_LIST_REDIS_CACHE_EXPIRE)
 
     return resp_json, 200, {'Content-Type': 'application/json'}
+
+
+@api.route('/facilities', methods=['GET'])
+def get_facilities():
+    try:
+        facilities = Facility.query.all()
+    except Exception as e:
+        current_app.logger.error(e)
+        return jsonify(errno=RET.DBERR, errmsg=u'查询设施出错')
+
+    if not facilities:
+        return jsonify(errno=RET.NODATA, errmsg=u'当前查询不到设施')
+
+    facility_li = []
+    for facility in facilities:
+        facility_li.append(facility.to_dict())
+
+    return jsonify(errno=RET.OK, errmsg=u'查询成功', data=facility_li)

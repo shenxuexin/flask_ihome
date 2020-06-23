@@ -28,7 +28,7 @@
                 <script id="house-index-temp" type="text/html">
                     {{each houses as house}}
                      <div class="swiper-slide">
-                        <a href="/detail.html?id={{house.id}}"><img src="{{house.image_url}}"></a>
+                        <a href="/detail.html?id={{house.id}}" data-ajax="false"><img src="{{house.image_url}}"></a>
                         <div class="slide-title">{{house.title}}</div>
                     </div>
                     {{/each}}

@@ -97,167 +97,18 @@
                     </div>
                     <div class="house-content">
                         <ul class="house-facility-list clearfix">
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="1">无线网络
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="2">热水淋浴
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="3">空调
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="4">暖气
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="5">允许吸烟
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="6">饮水设备
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="7">牙具
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="8">香皂
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="9">拖鞋
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="10">手纸
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="11">毛巾
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="12">沐浴露、洗发露
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="13">冰箱
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="14">洗衣机
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="15">电梯
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="16">允许做饭
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="17">允许带宠物
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="18">允许聚会
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="19">门禁系统
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="20">停车位
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="21">有线网络
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="22">电视
-                                     </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                     <label>
-                                          <input type="checkbox" name="facility" value="23">浴缸
-                                     </label>
-                                </div>
-                            </li>
+                            <script id="house-facility-list-temp" type="text/html">
+                                {{each facilities as facility}}
+                                <li>
+                                    <div class="checkbox">
+                                         <label>
+                                              <input type="checkbox" name="facility" value="{{facility.id}}">{{facility.name}}
+                                         </label>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </script>
+
                         </ul>
                     </div>
                 </li>

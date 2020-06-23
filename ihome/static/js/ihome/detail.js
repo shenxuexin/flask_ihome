@@ -29,8 +29,40 @@ $(function(){
                 paginationType: "fraction"
             });
 
-            $(".detail-con").append(template("detail-temp", {house: result.data.house}));
+            var house = result.data.house;
             $(".swiper-pagination").after(template("house-price-temp", {house:result.data.house}));
+
+            // 获取全部设施
+            $.get("/api/v1.0/facilities", function (result) {
+                if(result.errno === "0")
+                {
+                    var facilities = result.data;
+                    var facilities_exist = house.facilities;
+                    var len1 = facilities.length;
+                    var len2 = facilities_exist.length;
+
+                    // 过滤当前房屋存在的设施
+                    var compare = 0;
+                    for(var i=0; i<len1; i++)
+                    {
+                        if(compare >= len2)
+                        {
+                            break;
+                        }
+
+                        for(var j=0; j<len2; j++)
+                        {
+                            if(facilities[i].id === facilities_exist[j])
+                            {
+                                facilities[i].exist = true;
+                                compare ++;
+                            }
+                        }
+                    }
+
+                    $(".detail-con").append(template("detail-temp", {house:house, facilities:facilities}));
+                }
+            });
 
             if(result.data.user_id !== result.data.house.user_id)
             {
