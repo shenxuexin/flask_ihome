@@ -15,9 +15,6 @@ function getCookie(name) {
 }
 
 $(document).ready(function(){
-
-
-
     // 请求订单数据
     $.get("/api/v1.0/orders", {role: "custom"}, function (result) {
         if(result.errno === "4101")
@@ -66,6 +63,32 @@ $(document).ready(function(){
                         })
                     }
 
+                });
+            });
+
+            $(".order-pay").click(function () {
+                orderId = $(this).parents("li").attr("order-id");
+                $.ajax({
+                    url: "/api/v1.0/order/"+orderId+"/payment",
+                    type: "post",
+                    dataType: "json",
+                    headers: {
+                        "X-CSRFToken": getCookie("csrf_token")
+                    },
+                    success: function (result) {
+                        if(result.errno === "4101")
+                        {
+                            location.href = "/login.html";
+                        }
+                        else if (result.errno === "0")
+                        {
+                            location.href = result.pay_url;
+                        }
+                        else
+                        {
+                            alert(result.errmsg);
+                        }
+                    }
                 });
             });
         }

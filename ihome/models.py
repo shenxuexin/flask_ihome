@@ -227,6 +227,8 @@ class Order(BaseModel, db.Model):
         ),
         default='WAIT_ACCEPT', index=True)
     comment = db.Column(db.Text)  # 订单的评论信息或者拒单原因
+    trade_no = db.Column(db.String(80))  # 订单支付的流水号
+
     status_dict = {
         'WAIT_ACCEPT': '待接单',
         'WAIT_PAYMENT': '待支付',

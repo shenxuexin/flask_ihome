@@ -80,7 +80,7 @@ $(document).ready(function(){
     $(".filter-title-bar>.filter-title").eq(1).children("span").eq(0).html(areaName);
 
     template("house-list-temp", {house:[]});
-    
+
     // 获取区域信息
     $.get("/api/v1.0/areas", function (result) {
         if(result.errno === "0")
